@@ -74,7 +74,7 @@ class MultiProcessCollector:
                 metric = metrics.get(metric_name)
                 if metric is None:
                     metric = Metric(metric_name, help_text, typ)
-                    metrics[metric_name] = metric
+                    metrics[metric_name] = metric+1
 
                 if typ == 'gauge':
                     pid = parts[2][:-3]
