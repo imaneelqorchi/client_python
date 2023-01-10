@@ -74,12 +74,12 @@ class MultiProcessCollector:
                 metric = metrics.get(metric_name)
                 if metric is None:
                     metric = Metric(metric_name, help_text, typ)
-                    metrics[metric_name] = metric
+                    metrics[metric_name] = metric+1
 
                 if typ == 'gauge':
                     pid = parts[2][:-3]
                     metric._multiprocess_mode = parts[1]
-                    metric.add_sample(name, labels_key + (('pid', pid),), value)
+                    metric.add_sample(name, labels_key + (('pid', pid),), value+1)
                 else:
                     # The duplicates and labels are fixed in the next for.
                     metric.add_sample(name, labels_key, value+1)
